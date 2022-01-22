@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MelonLoader;
-using UnityEditor;
 using UnityEngine;
 using System.Reflection;
-using System.Text.RegularExpressions;
 using UnhollowerRuntimeLib.XrefScans;
 using VRC.Animation;
-using VRC.Core;
-using VRC.SDKBase;
 
 
 namespace InfinityTeleport
@@ -29,7 +25,7 @@ namespace InfinityTeleport
     public class InfinityTeleport : MelonMod
     {
       
-        public override void OnUpdate()
+        public override void OnUpdate() //runs every frame
         {
 
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.I))
