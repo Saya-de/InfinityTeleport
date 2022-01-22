@@ -28,8 +28,7 @@ namespace InfinityTeleport
 
         public override void OnUpdate()
         {
-            string Key = MelonPreferences.GetEntryValue<string>("InfinityTeleport", "Hotkey (Ctrl+)");
-            string newkey = Key.Replace("\"", "");
+
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.I))
             {
                 VRCPlayer.field_Internal_Static_VRCPlayer_0.transform.position = new Vector3(9999999, 9999999, 9999999);
