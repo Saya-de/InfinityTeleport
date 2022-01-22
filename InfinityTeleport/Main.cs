@@ -8,7 +8,8 @@ using UnityEngine;
 using System.Reflection;
 using UnhollowerRuntimeLib.XrefScans;
 using VRC.Animation;
-
+using UIExpansionKit.API;
+using System.Collections;
 
 namespace InfinityTeleport
 {
@@ -24,10 +25,11 @@ namespace InfinityTeleport
     }
     public class InfinityTeleport : MelonMod
     {
-      
-        public override void OnUpdate() //runs every frame
-        {
 
+        public override void OnUpdate()
+        {
+            string Key = MelonPreferences.GetEntryValue<string>("InfinityTeleport", "Hotkey (Ctrl+)");
+            string newkey = Key.Replace("\"", "");
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.I))
             {
                 VRCPlayer.field_Internal_Static_VRCPlayer_0.transform.position = new Vector3(9999999, 9999999, 9999999);
@@ -38,6 +40,7 @@ namespace InfinityTeleport
             {               
                 R.Respawn();
             }
+
         }
         
     }
