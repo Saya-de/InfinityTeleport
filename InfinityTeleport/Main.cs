@@ -20,7 +20,7 @@ namespace InfinityTeleport
     {
         public const string Name = "InfinityTeleport";
         public const string Description = "Teleport to Infinity"; 
-        public const string Author = "Say"; 
+        public const string Author = "Saya"; 
         public const string Company = null;
         public const string Version = "1.8.7"; 
         public const string DownloadLink = null;
