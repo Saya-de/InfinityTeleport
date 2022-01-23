@@ -6,6 +6,6 @@ This is a VRChat Melonloader Mod to Teleport into a Place where unity just cant 
 
 Just press Ctrl + I to Teleport to Infinity and Ctrl + F8 to teleport to spawn, so you dont get stuck there. You might have to reload your Avatar after that bc it often gets scuffed too!
 
-#License
+##License
 
 GNU General Public License v3.0
