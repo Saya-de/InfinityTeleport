@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MelonLoader;
+﻿using MelonLoader;
 using UnityEngine;
-using System.Reflection;
-using UnhollowerRuntimeLib.XrefScans;
-using VRC.Animation;
-using UIExpansionKit.API;
-using System.Collections;
+
 
 namespace InfinityTeleport
 {
@@ -36,41 +27,13 @@ namespace InfinityTeleport
 
 
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.F8))
-            {               
-                R.Respawn();
+            {
+
+                VRCPlayer.field_Internal_Static_VRCPlayer_0.transform.position = new Vector3(0, -500, 0);
             }
 
         }
         
     }
-    public static class R
-    {
-        private static bool XRefScanFor(this MethodBase methodBase, string searchTerm)
-        {
-            return XrefScanner.XrefScan(methodBase).Any(
-                xref => xref.Type == XrefType.Global && xref.ReadAsObject()?.ToString().IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0);
-        }
-
-        private static RespawnDelegate GetRespawnDelegate
-        {
-            get
-            {
-                if (respawnDelegate != null) return respawnDelegate;
-                MethodInfo respawnMethod = typeof(VRCPlayer).GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly).Single(m => m.GetParameters().Length == 0 && m.ReturnType == typeof(void) && m.XRefScanFor("Respawned while not in a room."));
-
-                respawnDelegate = (RespawnDelegate)Delegate.CreateDelegate(typeof(RespawnDelegate),VRCPlayer.field_Internal_Static_VRCPlayer_0,respawnMethod);
-                return respawnDelegate;
-            }
-        }
-
-        private static RespawnDelegate respawnDelegate;
-        private delegate void RespawnDelegate();
-
-        public static void Respawn()
-        {
-            GetRespawnDelegate();
-            VRCPlayer.field_Internal_Static_VRCPlayer_0.GetComponent<VRCMotionState>().Reset();
-        }
-
-    }
+ 
 }
